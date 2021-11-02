@@ -2,7 +2,6 @@ from abc import abstractmethod
 from typing import Any, Dict, List, Union, Tuple, overload
 from configs import DbConfigs
 from psycopg2 import extensions
-import uuid
 
 cdb_dsn = f"postgres://{DbConfigs.user}:{DbConfigs.pwd}@{DbConfigs.host}:{DbConfigs.port}/{DbConfigs.cluster_name}.{DbConfigs.db}?sslmode=verify-full&sslrootcert={DbConfigs.sslcertpath}"
 

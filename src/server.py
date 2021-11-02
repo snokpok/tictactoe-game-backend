@@ -9,11 +9,10 @@ from starlette.middleware.cors import CORSMiddleware
 from db import db_api, cdb_dsn
 from configs import DEBUG_MODE
 from pydantic import BaseModel
-from meta import table_metas
 from utils import utils_api
 
 app = FastAPI(debug=DEBUG_MODE)
-allowed_origins = ["http://localhost:3000"]
+allowed_origins = ["http://localhost:3000", "https://vincent-tictactoe-game.netlify.app/"]
 
 app.add_middleware(
     CORSMiddleware, 
@@ -120,4 +119,9 @@ async def get_data(tablename: str, format: str = "csv"):
         open(file=filepath, mode="r")
     except Exception as e:
         raise HTTPException(status_code=400, detail=e.args[1])
-    return FileResponse(filepath)
+    return FileResponse(
+        filepath,
+        headers={
+            "Cache-Control": "no-store",
+        }
+    )

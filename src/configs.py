@@ -1,6 +1,4 @@
-from logging import DEBUG
-from dotenv import dotenv_values
-from dotenv import dotenv_values, load_dotenv
+from dotenv import load_dotenv
 import os
 
 from dotenv.main import find_dotenv
@@ -9,13 +7,13 @@ load_dotenv(find_dotenv())
 
 
 class DbConfigs:
-    sslcertpath = "/Users/vmvu/.postgresql/root.crt"
-    user = 'vincent'
-    pwd = "Fkusam2212cdb"
-    host = "free-tier4.aws-us-west-2.cockroachlabs.cloud"
-    port = 26257
-    db = "defaultdb"
-    cluster_name = os.environ.get("CDB_CLUSTER_NAME")
+    sslcertpath = os.getenv("CDB_SSLCERT_PATH")
+    user = os.getenv("CDB_USER")
+    pwd = os.getenv("CDB_PWD")
+    host = os.getenv("CDB_HOST")
+    port = os.getenv("CDB_PORT")
+    db = os.getenv("CDB_DB")
+    cluster_name = os.getenv("CDB_CLUSTER_NAME")
 
     def __repr__(self) -> str:
         return f"""DbConfigs<
