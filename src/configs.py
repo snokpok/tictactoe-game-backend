@@ -7,7 +7,7 @@ load_dotenv(find_dotenv())
 
 
 class DbConfigs:
-    sslcertpath = os.getenv("CDB_SSLCERT_PATH")
+    sslcertpath = f'{os.getenv("HOME")}/.postgresql/root.crt'
     user = os.getenv("CDB_USER")
     pwd = os.getenv("CDB_PWD")
     host = os.getenv("CDB_HOST")
