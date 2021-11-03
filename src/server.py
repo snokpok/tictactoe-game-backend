@@ -12,7 +12,7 @@ from utils import utils_api
 
 def run_app(mode: str) -> FastAPI:
     app = FastAPI(debug=(mode == "dev"))
-    allowed_origins = ["http://localhost:3000", "https://vincent-tictactoe-game.netlify.app/"]
+    allowed_origins = ["http://0.0.0.0:3000/", "http://localhost:3000/", "https://vincent-tictactoe-game.netlify.app/"]
 
     app.add_middleware(
         CORSMiddleware, 
